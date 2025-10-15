@@ -1,0 +1,46 @@
+﻿@model AgendaMedica.Models.Agenda
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class=" text-white">Criar Agendamento</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PacienteId" class="control-label text-black"></label>
+                <select asp-for="PacienteId" class ="form-control" asp-items="ViewBag.Nome"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicoId" class="control-label text-black"></label>
+                <select asp-for="MedicoId" class ="form-control" asp-items="ViewBag.Nome"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataConsulta" class="control-label text-black"></label>
+                <input asp-for="DataConsulta" class="form-control" />
+                <span asp-validation-for="DataConsulta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label text-black"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-2">
+    <a asp-action="Index" class="text-black text-decoration-none bg-secondary py-2 px-2 rounded-2">
+        Voltar para Agenda</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
